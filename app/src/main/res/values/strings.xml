@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PizzaMe</string>
+    <string name="title_activity_place_details">PlaceDetailsActivity</string>
+    <string name="not_available">Not Available</string>
+</resources>
