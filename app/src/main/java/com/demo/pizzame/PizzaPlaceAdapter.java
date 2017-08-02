@@ -2,6 +2,8 @@ package com.demo.pizzame;
 
 import android.content.Context;
 import android.content.Intent;
+//import android.databinding.DataBindingUtil;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.demo.pizzame.databinding.ListRowBinding;
 import com.demo.pizzame.model.Result;
 
 import java.io.Serializable;
@@ -30,15 +33,18 @@ public class PizzaPlaceAdapter extends RecyclerView.Adapter<PizzaPlaceAdapter.Pi
 
     @Override
     public PizzaPlaceHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row,parent,false);
-        PizzaPlaceHolder holder = new PizzaPlaceHolder(view);
-
-        return holder;
+        ListRowBinding listRowBinding = DataBindingUtil.inflate(
+                LayoutInflater.from(parent.getContext()),
+                R.layout.list_row,
+                parent,
+                false);
+        return new PizzaPlaceHolder(listRowBinding);
     }
 
     @Override
     public void onBindViewHolder(PizzaPlaceHolder holder, int position) {
-        holder.bindPizzaPlaceDetails(mResultData.get(position));
+        ListRowBinding postBinding = holder.binding;
+        postBinding.setViewModel(new ListRowViewModel(mContext, mResultData.get(position)));
     }
 
     @Override
@@ -46,32 +52,12 @@ public class PizzaPlaceAdapter extends RecyclerView.Adapter<PizzaPlaceAdapter.Pi
         return mResultData == null ? 0 : mResultData.size();
     }
 
-    public class PizzaPlaceHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class PizzaPlaceHolder extends RecyclerView.ViewHolder {
+        private ListRowBinding binding;
 
-        private TextView nameLabel;
-        private TextView addressLabel;
-        private TextView phoneNumLabel;
-
-        public PizzaPlaceHolder(View itemView) {
-            super(itemView);
-            nameLabel = (TextView) itemView.findViewById(R.id.name);
-            addressLabel = (TextView) itemView.findViewById(R.id.address);
-            phoneNumLabel = (TextView) itemView.findViewById(R.id.phonenum);
-            itemView.setOnClickListener(this);
-        }
-
-        public void bindPizzaPlaceDetails(Result result) {
-            nameLabel.setText(result.getTitle());
-            addressLabel.setText(result.getFullAddress());
-            phoneNumLabel.setText(result.getPhone());
-        }
-        @Override
-        public void onClick(View v) {
-            int position = getAdapterPosition();
-            Intent intent = new Intent(mContext, PlaceDetailsActivity.class);
-            intent.putExtra(PlaceDetailsActivity.DETAILS_KEY, (Serializable) mResultData.get(position));
-            mContext.startActivity(intent);
-            Toast.makeText(mContext,"Hello",Toast.LENGTH_SHORT).show();
+        public PizzaPlaceHolder(ListRowBinding binding) {
+            super(binding.cardView);
+            this.binding = binding;
         }
     }
 }

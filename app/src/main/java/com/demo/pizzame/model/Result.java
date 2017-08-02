@@ -1,5 +1,7 @@
 package com.demo.pizzame.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 /**
@@ -7,206 +9,145 @@ import java.io.Serializable;
  */
 
 public class Result implements Serializable {
-    private String Phone;
 
-    private String Distance;
+    @SerializedName("Phone")
+    private String phone;
 
-    private String MapUrl;
+    @SerializedName("Distance")
+    private String distance;
 
-    private String xmlns;
+    @SerializedName("Title")
+    private String title;
 
-    private String Title;
+    @SerializedName("City")
+    private String city;
 
-    private String City;
+    @SerializedName("BusinessClickUrl")
+    private String businessClickUrl;
 
-    private String BusinessClickUrl;
+    @SerializedName("State")
+    private String state;
 
-    private String ClickUrl;
+    @SerializedName("Rating")
+    private Rating rating;
 
-    private String id;
+    @SerializedName("Address")
+    private String address;
 
-    private String BusinessUrl;
+    @SerializedName("Latitude")
+    private String latitude;
 
-    private String State;
-
-    private String Url;
-
-    private Rating Rating;
-
-    private String Address;
-
-    private String Latitude;
-
-    private String Longitude;
+    @SerializedName("Longitude")
+    private String longitude;
 
     public String getPhone ()
     {
-        return Phone;
+        return phone;
     }
 
     public void setPhone (String Phone)
     {
-        this.Phone = Phone;
+        this.phone = Phone;
     }
 
     public String getDistance ()
     {
-        return Distance;
+        return distance;
     }
 
     public void setDistance (String Distance)
     {
-        this.Distance = Distance;
-    }
-
-    public String getMapUrl ()
-    {
-        return MapUrl;
-    }
-
-    public void setMapUrl (String MapUrl)
-    {
-        this.MapUrl = MapUrl;
-    }
-
-    public String getXmlns ()
-    {
-        return xmlns;
-    }
-
-    public void setXmlns (String xmlns)
-    {
-        this.xmlns = xmlns;
+        this.distance = Distance;
     }
 
     public String getTitle ()
     {
-        return Title;
+        return title;
     }
 
     public void setTitle (String Title)
     {
-        this.Title = Title;
+        this.title = Title;
     }
 
     public String getCity ()
     {
-        return City;
+        return city;
     }
 
-    public void setCity (String City)
+    public void setCity (String city)
     {
-        this.City = City;
+        this.city = city;
     }
 
     public String getBusinessClickUrl ()
     {
-        return BusinessClickUrl;
+        return businessClickUrl;
     }
 
-    public void setBusinessClickUrl (String BusinessClickUrl)
+    public void setBusinessClickUrl (String businessClickUrl)
     {
-        this.BusinessClickUrl = BusinessClickUrl;
-    }
-
-    public String getClickUrl ()
-    {
-        return ClickUrl;
-    }
-
-    public void setClickUrl (String ClickUrl)
-    {
-        this.ClickUrl = ClickUrl;
-    }
-
-    public String getId ()
-    {
-        return id;
-    }
-
-    public void setId (String id)
-    {
-        this.id = id;
-    }
-
-    public String getBusinessUrl ()
-    {
-        return BusinessUrl;
-    }
-
-    public void setBusinessUrl (String BusinessUrl)
-    {
-        this.BusinessUrl = BusinessUrl;
+        this.businessClickUrl = businessClickUrl;
     }
 
     public String getState ()
     {
-        return State;
+        return state;
     }
 
     public void setState (String State)
     {
-        this.State = State;
-    }
-
-    public String getUrl ()
-    {
-        return Url;
-    }
-
-    public void setUrl (String Url)
-    {
-        this.Url = Url;
+        this.state = State;
     }
 
     public Rating getRating ()
     {
-        return Rating;
+        return rating;
     }
 
-    public void setRating (Rating Rating)
+    public void setRating (Rating rating)
     {
-        this.Rating = Rating;
+        this.rating = rating;
     }
 
     public String getAddress ()
     {
-        return Address;
+        return address;
     }
 
-    public void setAddress (String Address)
+    public void setAddress (String address)
     {
-        this.Address = Address;
+        this.address = address;
     }
 
     public double getLatitude ()
     {
-        return Double.valueOf(Latitude);
+        return Double.valueOf(latitude);
     }
     public String getLatitudeString() {
-        return Latitude;
+        return latitude;
     }
 
-    public void setLatitude (String Latitude)
+    public void setLatitude (String latitude)
     {
-        this.Latitude = Latitude;
+        this.latitude = latitude;
     }
 
     public double getLongitude ()
     {
-        return Double.valueOf(Longitude);
+        return Double.valueOf(longitude);
     }
 
     public String getLongitudeString() {
-        return Longitude;
+        return longitude;
     }
 
-    public void setLongitude (String Longitude)
+    public void setLongitude (String longitude)
     {
-        this.Longitude = Longitude;
+        this.longitude = longitude;
     }
 
     public String getFullAddress() {
-        return this.Address + ", " + this.City + ", " + this.State;
+        return this.address + ", " + this.city + ", " + this.state;
     }
 }

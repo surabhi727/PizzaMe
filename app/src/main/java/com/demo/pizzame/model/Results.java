@@ -1,21 +1,24 @@
 package com.demo.pizzame.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Surabhi on 7/29/17.
  */
 
 public class Results
 {
-    private Result[] Result;
+    @SerializedName("Result")
+    private Result[] result;
 
     public Result[] getResult ()
     {
-        return Result;
+        return result;
     }
 
-    public void setResult (Result[] Result)
+    public void setResult (Result[] result)
     {
-        this.Result = Result;
+        this.result = result;
     }
 
 }

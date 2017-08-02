@@ -47,7 +47,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private static final String YAHOO_LOCAL_SEARCH_API = "https://query.yahooapis.com";
     private static final int REQUEST_CHECK_SETTINGS = 0;
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
@@ -55,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getName();
     private QueryResponse mQueryResponse;
     private TextView mTextView;
-  //  private FusedLocationProviderClient mFusedLocationProviderClient;
-    //LocationRequest mLocationRequest;
+    private FusedLocationProviderClient mFusedLocationProviderClient;
     private RecyclerView mRecyclerView;
     private PizzaPlaceAdapter mPizzaPlaceAdapter;
     private List<Result> pizzaPlacesResult = new ArrayList<>();
@@ -65,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    //    mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -146,14 +144,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void init() {
 
-//        mFusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
-//            @Override
-//            public void onSuccess(Location location) {
-//                if (location != null) {
-//
-//                }
-//            }
-//        });
-        updateNearByPizzaPlaces(40.54, -74.30);
+        mFusedLocationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if (location != null) {
+                    updateNearByPizzaPlaces(location.getLatitude(), location.getLongitude());
+                }
+            }
+        });
     }
 }

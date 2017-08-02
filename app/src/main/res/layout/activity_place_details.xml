@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="placeDetailViewModel"
+            type="com.demo.pizzame.PlaceDetailViewModel">
+        </variable>
+    </data>
 <ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="12dp"
+    android:padding="12dp"
     tools:context="com.demo.pizzame.PlaceDetailsActivity">
 
     <LinearLayout
@@ -20,7 +28,7 @@
             android:layout_height="wrap_content"
             android:textSize="25sp"
             android:textColor="@android:color/black"
-            android:text="PIzza place"
+            android:text="@{placeDetailViewModel.placeName}"
             android:id="@+id/place_name"/>
 
         <RelativeLayout
@@ -32,8 +40,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
+                android:clickable="false"
+                android:isIndicator="true"
                 android:numStars="5"
-                android:rating="3.5"
+                android:rating="@{placeDetailViewModel.averageRating}"
                 android:stepSize="0.5"
                 android:theme="@style/RatingBar"/>
 
@@ -42,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="1.7 miles"
+                android:text="@{placeDetailViewModel.distance}"
                 android:textColor="@android:color/black"
                 android:textSize="10sp"
                 style="bold"
@@ -61,7 +71,8 @@
             android:id="@+id/address_layout"
             android:layout_width="match_parent"
             android:layout_marginTop="10dp"
-            android:layout_height="50dp">
+            android:layout_height="50dp"
+            android:onClick="@{placeDetailViewModel.onClickAddressDetails()}">
             <ImageView
                 android:id="@+id/address_pin"
                 android:layout_width="30dp"
@@ -76,7 +87,7 @@
                 android:padding="5dp"
                 android:layout_toRightOf="@+id/address_pin"
                 android:layout_toLeftOf="@+id/right_arrow"
-                android:text="@string/not_available"
+                android:text="@{placeDetailViewModel.address}"
                 android:layout_centerVertical="true"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
@@ -98,7 +109,8 @@
             android:id="@+id/driving_layout"
             android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="50dp">
+            android:layout_height="50dp"
+            android:onClick="@{placeDetailViewModel.onClickDrivingDirections()}">
             <ImageView
                 android:id="@+id/driving"
                 android:layout_width="30dp"
@@ -133,7 +145,8 @@
             android:id="@+id/phone_layout"
             android:layout_width="match_parent"
             android:layout_marginTop="5dp"
-            android:layout_height="50dp">
+            android:layout_height="50dp"
+            android:onClick="@{placeDetailViewModel.onClickCall()}">
             <ImageView
                 android:id="@+id/phone_call"
                 android:layout_width="30dp"
@@ -147,7 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="@string/not_available"
+                android:text="@{placeDetailViewModel.contactNumber}"
                 android:layout_toRightOf="@+id/phone_call"
                 android:layout_toLeftOf="@+id/right_arrow_2"
                 android:layout_centerVertical="true"
@@ -170,6 +183,7 @@
         <RelativeLayout
             android:id="@+id/web_address_layout"
             android:layout_width="match_parent"
+            android:onClick="@{placeDetailViewModel.onClickWebAddress()}"
             android:layout_marginTop="5dp"
             android:layout_height="50dp">
             <ImageView
@@ -185,7 +199,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="@string/not_available"
+                android:text="@{placeDetailViewModel.webAddress}"
                 android:layout_toRightOf="@+id/web"
                 android:layout_toLeftOf="@+id/right_arrow_3"
                 android:layout_centerVertical="true"
@@ -206,3 +220,4 @@
     </LinearLayout>
 
 </ScrollView>
+</layout>

@@ -1,5 +1,7 @@
 package com.demo.pizzame.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 /**
@@ -8,64 +10,69 @@ import java.io.Serializable;
 
 public class Rating implements Serializable
 {
-    private String LastReviewIntro;
+    @SerializedName("LastReviewIntro")
+    private String lastReviewIntro;
 
-    private String TotalReviews;
+    @SerializedName("TotalReviews")
+    private String totalReviews;
 
-    private String TotalRatings;
+    @SerializedName("TotalRatings")
+    private String totalRatings;
 
-    private long LastReviewDate;
+    @SerializedName("LastReviewDate")
+    private long lastReviewDate;
 
-    private String AverageRating;
+    @SerializedName("AverageRating")
+    private String averageRating;
 
     public String getLastReviewIntro ()
 {
-    return LastReviewIntro;
+    return lastReviewIntro;
 }
 
-    public void setLastReviewIntro (String LastReviewIntro)
+    public void setLastReviewIntro (String lastReviewIntro)
     {
-        this.LastReviewIntro = LastReviewIntro;
+        this.lastReviewIntro = lastReviewIntro;
     }
 
     public String getTotalReviews ()
     {
-        return TotalReviews;
+        return totalReviews;
     }
 
-    public void setTotalReviews (String TotalReviews)
+    public void setTotalReviews (String totalReviews)
     {
-        this.TotalReviews = TotalReviews;
+        this.totalReviews = totalReviews;
     }
 
     public String getTotalRatings ()
     {
-        return TotalRatings;
+        return totalRatings;
     }
 
-    public void setTotalRatings (String TotalRatings)
+    public void setTotalRatings (String totalRatings)
     {
-        this.TotalRatings = TotalRatings;
+        this.totalRatings = totalRatings;
     }
 
     public long getLastReviewDate ()
 {
-    return LastReviewDate;
+    return lastReviewDate;
 }
 
-    public void setLastReviewDate (long LastReviewDate)
+    public void setLastReviewDate (long lastReviewDate)
     {
-        this.LastReviewDate = LastReviewDate;
+        this.lastReviewDate = lastReviewDate;
     }
 
     public String getAverageRating ()
     {
-        return AverageRating;
+        return averageRating;
     }
 
-    public void setAverageRating (String AverageRating)
+    public void setAverageRating (String averageRating)
     {
-        this.AverageRating = AverageRating;
+        this.averageRating = averageRating;
     }
 
 }

@@ -1,59 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:cardview="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    cardview:cardCornerRadius="5dp"
-    cardview:cardElevation="3dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    android:padding="5dp"
-    cardview:cardUseCompatPadding="true">
-
-    <RelativeLayout
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data class="com.demo.pizzame.databinding.ListRowBinding">
+        <variable
+            name="viewModel"
+            type="com.demo.pizzame.ListRowViewModel">
+        </variable>
+    </data>
+    <android.support.v7.widget.CardView
+        xmlns:cardview="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp">
+        cardview:cardCornerRadius="5dp"
+        cardview:cardElevation="3dp"
+        android:id="@+id/card_view"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:padding="5dp"
+        android:onClick="@{viewModel.onClickPlace}"
+        cardview:cardUseCompatPadding="true">
 
-        <ImageView
-            android:id="@+id/pizza_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/pizza_slice"/>
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:padding="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/pizza_image"
-            android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"/>
+            android:layout_marginLeft="12dp">
 
-        <TextView
-            android:id="@+id/address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/name"
-            android:layout_toRightOf="@+id/pizza_image"
-            android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"/>
+            <ImageView
+                android:id="@+id/pizza_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/pizza_slice"/>
 
-        <TextView
-            android:id="@+id/phonenum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/address"
-            android:layout_toRightOf="@+id/pizza_image"
-            android:text="@string/app_name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            android:textColor="@android:color/black"
-            android:textSize="15sp"/>
-    </RelativeLayout>
-</android.support.v7.widget.CardView>
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.placeName}"
+                android:layout_toRightOf="@+id/pizza_image"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:text="@{viewModel.address}"
+                android:layout_toRightOf="@+id/pizza_image"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/phonenum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/address"
+                android:text="@{viewModel.contactNumber}"
+                android:layout_toRightOf="@+id/pizza_image"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@android:color/black"
+                android:textSize="15sp"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</layout>
