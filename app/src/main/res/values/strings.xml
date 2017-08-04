@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">PizzaMe</string>
-    <string name="title_activity_place_details">PlaceDetailsActivity</string>
+    <string name="title_activity_place_details">Details</string>
     <string name="not_available">Not Available</string>
+    <string name="label_driving_direction">Driving direction</string>
+    <string name="toast_permission_denied">Permission denied</string>
 </resources>

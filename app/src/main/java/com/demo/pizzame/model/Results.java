@@ -9,16 +9,16 @@ import com.google.gson.annotations.SerializedName;
 public class Results
 {
     @SerializedName("Result")
-    private Result[] result;
+    private PizzaPlace[] placeList;
 
-    public Result[] getResult ()
+    public PizzaPlace[] getPlaceList()
     {
-        return result;
+        return placeList;
     }
 
-    public void setResult (Result[] result)
+    public void setPizzaPlace(PizzaPlace[] placeList)
     {
-        this.result = result;
+        this.placeList = placeList;
     }
 
 }

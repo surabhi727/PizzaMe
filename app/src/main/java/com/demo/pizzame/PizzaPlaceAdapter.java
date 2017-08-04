@@ -1,21 +1,16 @@
 package com.demo.pizzame;
 
 import android.content.Context;
-import android.content.Intent;
 //import android.databinding.DataBindingUtil;
 import android.databinding.DataBindingUtil;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.demo.pizzame.databinding.ListRowBinding;
-import com.demo.pizzame.model.Result;
+import com.demo.pizzame.model.PizzaPlace;
+import com.demo.pizzame.viewModel.ListRowViewModel;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -24,10 +19,10 @@ import java.util.List;
 
 public class PizzaPlaceAdapter extends RecyclerView.Adapter<PizzaPlaceAdapter.PizzaPlaceHolder> {
 
-    private List<Result> mResultData;
+    private List<PizzaPlace> mPizzaPlaceData;
     private Context mContext;
-    public PizzaPlaceAdapter(Context context, List<Result> resultData) {
-        this.mResultData = resultData;
+    public PizzaPlaceAdapter(Context context, List<PizzaPlace> pizzaPlaceData) {
+        this.mPizzaPlaceData = pizzaPlaceData;
         this.mContext = context;
     }
 
@@ -44,12 +39,12 @@ public class PizzaPlaceAdapter extends RecyclerView.Adapter<PizzaPlaceAdapter.Pi
     @Override
     public void onBindViewHolder(PizzaPlaceHolder holder, int position) {
         ListRowBinding postBinding = holder.binding;
-        postBinding.setViewModel(new ListRowViewModel(mContext, mResultData.get(position)));
+        postBinding.setViewModel(new ListRowViewModel(mContext, mPizzaPlaceData.get(position)));
     }
 
     @Override
     public int getItemCount() {
-        return mResultData == null ? 0 : mResultData.size();
+        return mPizzaPlaceData == null ? 0 : mPizzaPlaceData.size();
     }
 
     public class PizzaPlaceHolder extends RecyclerView.ViewHolder {

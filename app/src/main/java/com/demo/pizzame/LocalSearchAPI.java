@@ -12,6 +12,6 @@ import retrofit2.http.Query;
  */
 
 public interface LocalSearchAPI {
-    @GET("/v1/public/yql/")
-    Call<QueryResponse> getNearByPizzaPlaces(@Query("q") String query, @Query("format") String format, @Query("sort") String distance);
+    @GET("/v1/public/yql/?format=json&sort=distance")
+    Call<QueryResponse> getNearByPizzaPlaces(@Query("q") String query);
 }

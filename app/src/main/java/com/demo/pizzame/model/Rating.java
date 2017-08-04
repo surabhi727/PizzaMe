@@ -1,5 +1,8 @@
 package com.demo.pizzame.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -8,7 +11,7 @@ import java.io.Serializable;
  * Created by Surabhi on 7/29/17.
  */
 
-public class Rating implements Serializable
+public class Rating implements Parcelable
 {
     @SerializedName("LastReviewIntro")
     private String lastReviewIntro;
@@ -24,6 +27,15 @@ public class Rating implements Serializable
 
     @SerializedName("AverageRating")
     private String averageRating;
+
+    public Rating(Parcel in) {
+        this.lastReviewIntro = in.readString();
+        this.totalReviews = in.readString();
+        this.totalRatings = in.readString();
+        this.lastReviewDate = in.readLong();
+        this.averageRating = in.readString();
+
+    }
 
     public String getLastReviewIntro ()
 {
@@ -75,4 +87,30 @@ public class Rating implements Serializable
         this.averageRating = averageRating;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(lastReviewIntro);
+        dest.writeString(totalReviews);
+        dest.writeString(totalRatings);
+        dest.writeLong(lastReviewDate);
+        dest.writeString(averageRating);
+
+    }
+
+    public static final Creator<Rating> CREATOR = new Creator<Rating>() {
+        @Override
+        public Rating createFromParcel(Parcel source) {
+            return new Rating(source);
+        }
+
+        @Override
+        public Rating[] newArray(int size) {
+            return new Rating[size];
+        }
+    };
 }
